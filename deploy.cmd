@@ -90,16 +90,11 @@ goto :EOF
 :: Select node version
 call :SelectNodeVersion
 
-:: Install global npm modules
-echo Installing global npm modules
-call :ExecuteCmd !NPM_CMD! install -g typings
-IF !ERRORLEVEL! NEQ 0 goto error
-
 :: Install npm packages
 echo Installing npm pacakges
 IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
   pushd "%DEPLOYMENT_SOURCE%"
-  call :ExecuteCmd !NPM_CMD! install --production
+  call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )

@@ -85,8 +85,8 @@ goto :EOF
 :: Deployment
 :: ----------
 
-:Deployment
-echo Handling node.js deployment.
+echo Selecting node version
+call :SelectNodeVersion
 
 echo Installing npm packages
 call :ExecuteCmd !NPM_CMD! install
